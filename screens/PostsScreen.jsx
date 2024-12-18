@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
-import { MaterialIcons, Feather } from "@expo/vector-icons"; // Імпортуємо іконки з Expo
+import { MaterialIcons, Feather } from "@expo/vector-icons";
 import Avatar from "../assets/images/Avatar.png";
 import HomePhoto1 from "../assets/images/Home_photo_1.png";
 import HomePhoto2 from "../assets/images/Home_photo_2.png";
@@ -9,13 +9,6 @@ import styles from "../styles/PostsScreenStyles";
 const PostsScreen = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerText}>Публікації</Text>
-        <TouchableOpacity style={styles.logoutBtn}>
-          <MaterialIcons name="logout" size={24} color="#BDBDBD" />
-        </TouchableOpacity>
-      </View>
-
       <ScrollView style={styles.scrollView}>
         <View style={styles.userSection}>
           <Image source={Avatar} style={styles.avatar} />
@@ -59,22 +52,6 @@ const PostsScreen = () => {
           </View>
         </View>
       </ScrollView>
-
-      <View style={styles.footerWrapper}>
-        <TouchableOpacity style={styles.footerIcon}>
-          <MaterialIcons name="grid-view" size={24} color="#212121" />
-        </TouchableOpacity>
-
-        <View style={styles.addPostWrapper}>
-          <TouchableOpacity>
-            <MaterialIcons name="add" style={styles.addPostIcon} />
-          </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity style={styles.footerIcon}>
-          <MaterialIcons name="person-outline" size={24} color="#212121" />
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };

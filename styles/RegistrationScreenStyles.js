@@ -88,4 +88,10 @@ export default StyleSheet.create({
     color: "#1B4371",
     textAlign: "center",
   },
+  linkText: {
+    fontFamily: "Roboto-Regular",
+    fontSize: 16,
+    color: "#1B4371",
+    textDecorationLine: "underline",
+  },
 });

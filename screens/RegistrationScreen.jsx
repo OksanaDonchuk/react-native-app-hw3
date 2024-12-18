@@ -5,43 +5,34 @@ import {
   ImageBackground,
   Image,
   Pressable,
-  TouchableOpacity,
   Alert,
   KeyboardAvoidingView,
   ScrollView,
   TouchableWithoutFeedback,
   Keyboard,
   Platform,
+  TouchableOpacity,
 } from "react-native";
-import { useFonts } from "expo-font";
 import BgImg from "../assets/images/bg-img.jpg";
 import AddIcon from "../assets/images/add.png";
 import InputField from "../components/InputField";
 import styles from "../styles/RegistrationScreenStyles";
 
-const RegistrationScreen = () => {
-  const [fontsLoaded] = useFonts({
-    "Roboto-Regular": require("../assets/fonts/Roboto-Regular.ttf"),
-    "Roboto-Medium": require("../assets/fonts/Roboto-Medium.ttf"),
-    "Roboto-Bold": require("../assets/fonts/Roboto-Bold.ttf"),
-  });
-
+const RegistrationScreen = ({ navigation }) => {
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isShown, setIsShown] = useState(false);
   const [focusedField, setFocusedField] = useState(null);
 
-  if (!fontsLoaded) {
-    return null;
-  }
-
-  const handleSubmit = () => {
-    console.log("Login:", login);
-    console.log("Email:", email);
-    console.log("Password:", password);
+  function handleSubmit() {
+    console.log({ login: login, email: email, password: password });
+    navigation.replace("Login");
     Alert.alert("Реєстрація успішна!");
-  };
+    setLogin("");
+    setEmail("");
+    setPassword("");
+  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -102,8 +93,8 @@ const RegistrationScreen = () => {
               </Pressable>
               <View style={styles.formTextWrapper}>
                 <Text style={styles.formText}>Вже є акаунт?</Text>
-                <TouchableOpacity>
-                  <Text style={styles.formText}>Увійти</Text>
+                <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+                  <Text style={styles.linkText}>Увійти</Text>
                 </TouchableOpacity>
               </View>
             </View>
